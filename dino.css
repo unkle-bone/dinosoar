@@ -1,0 +1,17 @@
+body{
+    margin:0;
+}
+
+div{
+    box-sizing: border-box;
+    position: absolute;
+}
+
+.root{
+    border: 33px dashed orange;
+    background:yellow;
+}
+
+.player{
+    border: 8px dashed red;
+}
