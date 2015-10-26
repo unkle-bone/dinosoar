@@ -31,8 +31,14 @@ var viewport = {
         class: 'player',
         origin: [0,0],
         v: [0,0],
+        jumpV: [0, -50],
+        gravityV: [0, -10],
         get: function(){ return $('.'+player.class); },
 
+        getPos: function(){ var off = player.get().offset(); return [off.left, off.top]; },
+        grounded: function() {
+            return player.getPos()[1] >= player.origin[1];
+        },
         fitToScreen: function(){
             // base position is 2/3 height, 1/3 width
             var scrn = viewport.getScreen();
