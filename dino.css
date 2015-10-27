@@ -5,6 +5,7 @@ body{
 div{
     box-sizing: border-box;
     position: absolute;
+    image-rendering: pixelated;
 }
 
 .root{
@@ -13,5 +14,7 @@ div{
 }
 
 .player{
-    border: 8px dashed red;
+    border: 1px dashed red;
+    background-image: url(sheet-trex.png);
+    background-size: 400%;
 }

@@ -29,6 +29,7 @@ var viewport = {
 
     player = {
         class: 'player',
+        bound: [0, 0],
         origin: [0,0],
         v: [0,0],
         jumpV: [0, -50],
@@ -41,13 +42,17 @@ var viewport = {
         },
         fitToScreen: function(){
             // base position is 2/3 height, 1/3 width
-            var scrn = viewport.getScreen();
-            player.origin = [scrn[0] * 1/3, scrn[1] * 2/3];
+            var scrn = viewport.getScreen(),
+                width = scrn[0]*1/5;
+            player.origin = [scrn[0] * 1/10, scrn[1] * 2/3];
+            player.bound = [width, width];
             player
                 .get()
                 .css({
                     left: player.origin[0]+'px',
-                    top: player.origin[1]+'px'
+                    top: player.origin[1]+'px',
+                    width: player.bound[0]+'px',
+                    height: player.bound[1]+'px'
                 });
         },
         make: function(){
@@ -59,6 +64,9 @@ var viewport = {
         // what it does during one frame
         step: function(){
 
+            player.get().css({
+                'background-position-x':'-66%'
+            });
         }
     },
 
@@ -69,6 +77,7 @@ var viewport = {
         loop: function(time){
             game.time = time;
             game.timeDelta = (game.time - game.timeLast)/1000;
+            player.step();
             window.requestAnimationFrame(game.loop);
         }
     };
