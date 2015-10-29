@@ -3,6 +3,9 @@
     function aa(a1,a2){
         return [a1[0]+a2[0], a1[1]+a2[1]];
     }
+    function rnd(mag){
+        return mag/2 - (Math.random() * mag);
+    }
     //
     function $pos($s){
         return [parseFloat($s.css('left').replace('px','')),
@@ -49,7 +52,7 @@ var viewport = {
         bound: [0, 0],
         origin: [0,0],
         v: [0,0],
-        jumpV: [0, -62],
+        jumpV: [0, -162],
         gravityV: [0, 33],
         fallSpeedlimit: 5,
         get: function(){ return $('.'+player.class); },
@@ -97,12 +100,12 @@ var viewport = {
                 player.v[1] += player.gravityV[1]*game.timeDelta;
             }
             pos = aa(pos, player.v);
+            pos = aa(pos, [rnd(5), rnd(1)]);
 
             // can't go beneith floor
             if(pos[1]>=player.origin[1]){
                 pos[1] = player.origin[1];
                 player.v[1] = 0;
-                //l('reset');
             }
 
             p.css({

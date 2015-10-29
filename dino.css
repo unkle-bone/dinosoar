@@ -18,7 +18,6 @@ div{
 }
 
 .player{
-    border: 1px dashed red;
     background-image: url(sheet-trex.png);
     background-size: 400%;
 }
